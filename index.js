@@ -29,22 +29,12 @@ app.use(express.urlencoded({extended:true}));
 app.use(express.json());
 app.use(methodOverride('_method'))
 app.use('/articles', articleRouter);
- 
-
-
 
 
 app.get('/',async(req,res)=>{
     const articles = await Article.find().sort({createdAt:'desc'})
     res.render('articles/index',{articles : articles});
 })
-
-
-
-
-
-
-
 
 
 app.listen(process.env.PORT || 2023,()=>{
